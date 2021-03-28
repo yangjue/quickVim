@@ -1,0 +1,26 @@
+quit Vim 
+set tags = tags
+vimgrep/main/ src/*.c
+bufdo! %s/Find/Rep/ge|update
+syntax on 
+set foldmethod = manual indent syntax 
+bufdo! %s/j-\z\d\+/\=submatch(0)>30 ? submatch(0)+1:submatch(0)/ge|update
+ctrl w gf   // open file in new window
+
+
+register : 
+1 . Vim 有自己的 unnamed （无名寄存器）或者说默认寄存器，可以通过 "" 来访问
+2 . Vim 提供 26 个英文字母命名的有名寄存器
+3 . 数字寄存器 存放yank 的历史内容 最新的放在0 中
+4 .  “#   轮换文件名 name of the alternate file    , 使用 ctrl + ^
+      “%  当前文件名 name of the current file 
+        "=  是表达式寄存器  ， 使用比较复杂 在inert mode 下， ctrl r =  然后输入2+2<enter> 或者system('ls') <enter>
+        
+5 .  写寄存器 :let @+=@%
+6 .  修改寄存器w 方法 let @w='content'   // two ' ' are needed  
+     或者  用大写W追加
+7.  移动  ：
+        显示文件49% 的位置在屏幕中间
+        zz 将光标所在行显示在屏幕中间
+        zb                                        底部
+        zt                                         头部
