@@ -24,3 +24,16 @@ register :
         zz 将光标所在行显示在屏幕中间
         zb                                        底部
         zt                                         头部
+        
+        
+
+// 排序
+:%!column -t
+:%!sort -k2nr    // -k2  indicates second column ; r  indicates reverse
+//查找 
+cat filec | awk ' $3 == "swu" { print $3 } ' | wc -lw
+awk  -F  ':'    ' { print $1“\t" $7} '     //  ':'  表示分隔符
+
+grep -r -n "name" --exclude  file  ./*
+grep -c 'warning\|error'  log 
+
